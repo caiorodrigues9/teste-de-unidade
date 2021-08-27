@@ -6,15 +6,19 @@ use Caio\Leilao\Dao\Leilao as LeilaoDao;
 
 class Encerrador
 {
+    public function __construct(private LeilaoDao $dao)
+    {
+
+    }
+
     public function encerra()
     {
-        $dao = new LeilaoDao();
-        $leiloes = $dao->recuperarNaoFinalizados();
+        $leiloes = $this->dao->recuperarNaoFinalizados();
 
         foreach ($leiloes as $leilao) {
             if ($leilao->temMaisDeUmaSemana()) {
                 $leilao->finaliza();
-                $dao->atualiza($leilao);
+                $this->dao->atualiza($leilao);
             }
         }
     }
