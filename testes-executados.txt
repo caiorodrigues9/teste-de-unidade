@@ -17,3 +17,6 @@ Avaliador (Caio\Leilao\Tests\Service\Avaliador)
  [x] Leilao sem lance nao pode ser avaliado
  [x] Leilao finalizado nao pode ser avaliado
 
+Encerrador (Service\Encerrador)
+ [ ] Leiloes com mais de uma semana devem ser encerrados
+
