@@ -1,6 +1,6 @@
 <?php
 
-namespace Caio\Leilao\Tests\Service;
+namespace Caio\Leilao\Tests\Unit\Service;
 
 use Caio\Leilao\Model\Lance;
 use Caio\Leilao\Model\Leilao;

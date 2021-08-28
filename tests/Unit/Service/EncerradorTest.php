@@ -1,6 +1,6 @@
 <?php
 
-namespace Service;
+namespace Caio\Leilao\Tests\Unit\Service;
 
 use Caio\Leilao\Dao\Leilao as LeilaoDao;
 use Caio\Leilao\Model\Leilao;
