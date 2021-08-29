@@ -1,7 +1,3 @@
-Leilao Dao (Caio\Leilao\Tests\Integration\Dao\LeilaoDao)
- [x] Busca leiloes nao finalizados with data set "leiloes"
- [x] Busca leiloes finalizados with data set "leiloes"
-
 Leilao (Caio\Leilao\Tests\Unit\Model\Leilao)
  [x] Leilao nao deve aceitar mais de 5 lances por usuario
  [x] Leilao nao deve receber lances repetidos
@@ -25,4 +21,9 @@ Encerrador (Caio\Leilao\Tests\Unit\Service\Encerrador)
  [x] Leiloes com mais de uma semana devem ser encerrados
  [x] Deve continuar o processamento ao encontrar erro ao enviar email
  [x] So deve encaminhar email se leilao esta finalizado
+
+Leilao Dao (Caio\Leilao\Tests\Integration\Dao\LeilaoDao)
+ [x] Busca leiloes nao finalizados with data set "leiloes"
+ [x] Busca leiloes finalizados with data set "leiloes"
+ [x] Ao atualizarleilao status deve ser alterado
 

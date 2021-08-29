@@ -2,6 +2,7 @@
 
 namespace Caio\Leilao\Tests\Integration\Dao;
 
+use Caio\Leilao\Dao\Leilao as LeilaoDao;
 use Caio\Leilao\Infra\ConnectionCreator;
 use Caio\Leilao\Model\Leilao;
 use PHPUnit\Framework\TestCase;
@@ -31,7 +32,7 @@ class LeilaoDaoTest extends TestCase
      */
     public function testBuscaLeiloesNaoFinalizados(array $leiloes)
     {
-        $leilaoDao = new \Caio\Leilao\Dao\Leilao(self::$pdo);
+        $leilaoDao = new LeilaoDao(self::$pdo);
 
         foreach ($leiloes as $leilao) {
             $leilaoDao->salva($leilao);
@@ -50,7 +51,7 @@ class LeilaoDaoTest extends TestCase
      */
     public function testBuscaLeiloesFinalizados(array $leiloes)
     {
-        $leilaoDao = new \Caio\Leilao\Dao\Leilao(self::$pdo);
+        $leilaoDao = new LeilaoDao(self::$pdo);
 
         foreach ($leiloes as $leilao) {
             $leilaoDao->salva($leilao);
@@ -65,6 +66,26 @@ class LeilaoDaoTest extends TestCase
 
     }
 
+    public function testAoAtualizarleilaoStatusDeveSerAlterado()
+    {
+        $leilao = new Leilao('Brasília Amarela');
+        $leilaoDao = new LeilaoDao(self::$pdo);
+        $leilao = $leilaoDao->salva($leilao);
+
+        $leiloes = $leilaoDao->recuperarNaoFinalizados();
+        self::assertCount(1,$leiloes);
+        self::assertSame('Brasília Amarela',$leiloes[0]->recuperarDescricao());
+        self::assertFalse($leiloes[0]->leilaoEstaFinalizado());
+
+        $leilao->finaliza();
+        $leilaoDao->atualiza($leilao);
+
+        $leiloes = $leilaoDao->recuperarFinalizados();
+        self::assertCount(1,$leiloes);
+        self::assertSame('Brasília Amarela',$leiloes[0]->recuperarDescricao());
+        self::assertTrue($leiloes[0]->leilaoEstaFinalizado());
+    }
+    
     protected function tearDown(): void
     {
         self::$pdo->rollBack();
