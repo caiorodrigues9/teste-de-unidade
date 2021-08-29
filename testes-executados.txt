@@ -27,3 +27,6 @@ Leilao Dao (Caio\Leilao\Tests\Integration\Dao\LeilaoDao)
  [x] Busca leiloes finalizados with data set "leiloes"
  [x] Ao atualizarleilao status deve ser alterado
 
+Rest Api (Caio\Leilao\Tests\Integration\Web\RestApi)
+ [x] Api rest deve retornar array deleiloes
+
